@@ -20,7 +20,13 @@ const Game2048 = () => {
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const positionToPixels = (position) => {
+    return position * 120; // Adjust this value based on tile size and margin
+  };
+
+  const [scale, setScale] = useState(1);
+  const [prevValue, setPrevValue] = useState(null);
+
   const addNewTile = useCallback((board) => {
     if (!hasEmptyTile(board)) return;
 
@@ -40,6 +46,13 @@ const Game2048 = () => {
   const filterZero = (row) => {
     return row.filter(num => num !== 0); // create new array without zeros
   };
+
+  useEffect(() => {
+    if (prevValue !== null) {
+      setScale(1.1);
+      setTimeout(() => setScale(1), 100);
+    }
+  }, [prevValue]);
 
   const slide = (row) => {
     row = filterZero(row); // getting rid of zeros
@@ -83,7 +96,7 @@ const Game2048 = () => {
     }
     setBoard([...board]);
     return moved; // Return whether any tile has moved
-  }, [board, slide]);
+  }, [board]);
 
   const slideRight = useCallback(() => {
     let moved = false; // Variable to track if any tile moved
@@ -230,7 +243,7 @@ const Game2048 = () => {
       console.log("Game Over!");
       setGameOver(true);
     }
-  }, [addNewTile, isGameOver, slideDown, slideLeft, slideRight, slideUp, board, score, bestScore]); // Include dependencies
+  }, [addNewTile, slideDown, slideLeft, slideRight, slideUp, board]); // Include dependencies
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyUp);
@@ -262,7 +275,13 @@ const Game2048 = () => {
             <div
               key={`${rIdx}-${cIdx}`}
               id={`${rIdx}-${cIdx}`}
-              className={`${styles.tile} ${styles[`x${num}`]}`}
+              className={`${styles.tile} ${styles[`tile${num}`]}`}
+              style={{
+                left: positionToPixels(cIdx),
+                top: positionToPixels(rIdx),
+                transform: `scale(${scale})`,
+                zIndex: num
+              }}
             >
               {num > 0 && num}
             </div>
