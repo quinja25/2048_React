@@ -9,11 +9,10 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 function Signup() {
-    // className={styles.main}
-
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState(''); // Error state for displaying error messages
     const router = useRouter();
 
     const handleNameChange = (e) => setName(e.target.value);
@@ -22,13 +21,21 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setError(''); // Reset error state before submitting
         axios.post('http://localhost:3001/register', { name, email, password })
             .then(result => {
                 console.log(result);
                 // I want to direct this to /login here
                 router.push('/login');
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err);
+                if (err.response && err.response.status === 400) {
+                    setError('Invalid email or password');
+                } else {
+                    setError('An error occurred. Please try again.');
+                }
+            });
     }
 
     return (
@@ -66,6 +73,7 @@ function Signup() {
                         />
                     </Form.Group>
                     <Button variant="primary" type="submit">Register</Button>{' '}
+                    {error && <label style={{ color: 'red' }}>{error}</label>} {/* Conditionally render error message */}
                 </Form>
                 <>
                     <label>Already Have an Account</label>
@@ -79,4 +87,4 @@ function Signup() {
     );
 }
 
-export default Signup; 
+export default Signup;

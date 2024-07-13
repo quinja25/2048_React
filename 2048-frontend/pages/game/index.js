@@ -20,6 +20,10 @@ const Game2048 = () => {
   const [gameOver, setGameOver] = useState(false);
   const [gameWon, setGameWon] = useState(false);
 
+  useEffect(() => {
+    setGame();
+  }, []);
+
   const positionToPixels = (position) => {
     return position * 120; // Adjust this value based on tile size and margin
   };
