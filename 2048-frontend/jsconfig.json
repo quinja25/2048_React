@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["pages/*"]
+    }
+  },
+  "include": [
+    "pages",
+    "pages/layout.js",
+    "pages/game/signup.js",
+    "pages/page.js",
+    "pages/game/index.js",
+    "pages/home/index.js",
+    "pages/login/index.js",
+    "pages/register/index.js",
+    "src/components/components/Game2048.js"
+  ]
+}

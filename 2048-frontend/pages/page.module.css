@@ -1,0 +1,26 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  /* width: 100%; */
+}
+
+.register {
+  width: 400px;
+  border: solid black 1px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.loginDir {
+  margin-top: 10px;
+}
+
+.login {
+  width: 400px;
+  border: solid black 1px;
+  padding: 20px;
+  border-radius: 10px;
+}
