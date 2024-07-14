@@ -69,8 +69,8 @@ function Login() {
                 <>
                     <label>Don't Have an Account?</label>
                     <br />
-                    <Link href="/register" passHref>
-                        <Button variant="secondary" className={styles.loginDir}>Register</Button>{' '}
+                    <Link href="/register" passHref legacyBehavior>
+                        <Button variant="secondary" className={styles.loginDir}>Register</Button>
                     </Link>
                 </>
             </div>
