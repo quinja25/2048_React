@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -8,9 +8,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
-
 function Login() {
-    // className={styles.main}
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
@@ -26,17 +24,16 @@ function Login() {
             .then(result => {
                 console.log(result);
                 if (result.data === "Success") {
-                    router.push('/home');
+                    router.push('/game');
                 } else {
                     setError('Invalid email or password');
                 }
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
                 setError('An error occurred. Please try again.');
             });
-    }
-
+    };
 
     return (
         <main className={styles.main}>
@@ -64,13 +61,17 @@ function Login() {
                         />
                     </Form.Group>
                     <Button variant="primary" type="submit">Login</Button>{' '}
-                    {error && <label style={{ color: 'red' }}>{error}</label>} {/* Conditionally render error message */}
+                    {error && <label style={{ color: 'red' }}>{error}</label>}
                 </Form>
                 <>
                     <label>Don't Have an Account?</label>
                     <br />
-                    <Link href="/register" passHref legacyBehavior>
+                    <Link href="/register">
                         <Button variant="secondary" className={styles.loginDir}>Register</Button>
+                    </Link>
+                    <br />
+                    <Link href="/game">
+                        <Button variant="secondary" className={styles.loginDir}>Play as Guest</Button>
                     </Link>
                 </>
             </div>
@@ -78,4 +79,4 @@ function Login() {
     );
 }
 
-export default Login; 
+export default Login;

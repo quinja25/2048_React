@@ -81,6 +81,9 @@ function Signup() {
                     <Link href="/login" passHref>
                         <Button variant="secondary" className={styles.loginDir}>Login</Button>{' '}
                     </Link>
+                    <Link href="/game">
+                        <Button variant="secondary" className={styles.loginDir}>Play as Guest</Button>
+                    </Link>
                 </>
             </div>
         </main>
