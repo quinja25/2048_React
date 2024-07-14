@@ -86,8 +86,9 @@
   }
 
   .tile2 { background-color: #eee4da;  
-    background-image: url('/images/2.mp4');}
-  .tile4 { background-color: #ede0c8; color: #776e65; }
+    background-image: url('/images/2.gif');}
+  .tile4 { background-color: #ede0c8; color: #776e65; 
+    background-image: url('/images/4.gif');}
   .tile8 { background-color: #f2b179; color: #f9f6f2; }
   .tile16 { background-color: #f59563; color: #f9f6f2; }
   .tile32 { background-color: #f67c5f; color: #f9f6f2; }
