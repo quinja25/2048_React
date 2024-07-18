@@ -25,7 +25,7 @@ function Signup() {
         axios.post('http://localhost:3001/register', { name, email, password })
             .then(result => {
                 console.log(result);
-                // I want to direct this to /login here
+                // Redirect to login page upon successful registration
                 router.push('/login');
             })
             .catch(err => {
