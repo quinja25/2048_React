@@ -1,3 +1,6 @@
+Full implementation of the 2048 game with React. Login/register to play the game. 
+HTML/CSS version of the game is also available.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
